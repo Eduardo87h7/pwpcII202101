@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www",
-    "w:d" : "babel-watch ./server/bin/www"
+    "start": "node ./dist-server/bin/www",
+    "w:d": "babel-watch ./server/bin/www",
+    "clean": "rimraf dist-server",
+    "b:s" : "npm run clean && babel ./server --out-dir dist-server --copy-files"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,7 +14,8 @@
     "express": "~4.16.1",
     "hbs": "^4.1.2",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
