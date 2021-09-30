@@ -6,7 +6,7 @@
     "start": "node ./dist-server/bin/www",
     "w:d": "babel-watch ./server/bin/www",
     "clean": "rimraf dist-server",
-    "b:s" : "npm run clean && babel ./server --out-dir dist-server --copy-files"
+    "b:s": "npm run clean && babel ./server --out-dir dist-server --copy-files"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -22,6 +22,8 @@
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-preset-minify": "^0.5.1",
     "babel-watch": "^7.5.0"
   }
 }

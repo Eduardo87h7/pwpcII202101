@@ -10,9 +10,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan'
 
 //var indexRouter = require('./routes/index');
-import indexRouter from './routes/index'
+import indexRouter from '@s-routes/index'
 //var usersRouter = require('./routes/users');
-import usersRouter from './routes/users'
+import usersRouter from '@s-routes/users'
 
 var app = express();
 
