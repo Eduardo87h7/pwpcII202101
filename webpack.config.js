@@ -1,12 +1,56 @@
+const path = require('path');
+const { devServer } = require('./webpack.config');
 module.exports = {
-    // especificando el archivo de entrada
+    //establecer el modo de desarrollo
+    mode: 'development',
+    //especificando el archivo de emtrada
     entry: './client/index.js',
-    //especificar el archivo de salida
     output: {
-        path: '/public',// ruta absoluta de la salida
-        filename: 'bundle.js'
+        path: path.join(__dirname, 'public'),
+        filename:'js/bundle.js',
+        publicPath: './'
     },
-    devServer : {
-        static: './public'
+    devServer:{
+        static: path.join(__dirname, 'public'),
+        port: 8085,
+        host: 'localhost'
+    },
+    module: {
+        rules: [
+            {
+              test: /\.js$/,  
+              exclude: /(node_modules|bower_components)/,
+              use: [
+                  {
+                      loader:'babel-loader',
+                      options: {
+                          presets:[
+                              [
+                                  '@babel/preset-env',
+                                  {
+                                    'modules': false,
+                                    'useBuiltIns':'usage',
+                                    'targets':"> 0.25%, not dead",
+                                    'corejs':3
+                                  }
+                              ]
+                          ],
+                          "plugins":[
+                              [
+                                 "module-resolver",
+                                 {
+                                     "root":["./"],
+                                     "alias":{
+                                         "@client": "./client",
+                                     }
+
+                                 } 
+                              ]
+                          ]
+                      }
+                  }
+              ]
+            }
+        ]
     }
 }

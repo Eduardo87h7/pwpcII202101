@@ -1,18 +1,59 @@
-const path = require('path');
-const { devServer } = require('./webpack.config');
-module.exports = {
-    //establecer el modo de desarrollo
-    mode: 'development',
-    //especificando el archivo de emtrada
-    entry: './client/index.js',
-    output: {
-        path: path.join(__dirname, 'public'),
+const path=require('path');
+module.exports={
+
+    mode:'development',
+
+    entry:'./client/index.js',
+
+    output:{
+  
+        path:path.join(__dirname,'public'),
+    
         filename:'js/bundle.js',
-        publicPath: './'
+    
+        publicPath:'/'
     },
     devServer:{
-        static: path.join(__dirname, 'public'),
-        port: 8085,
-        host: 'localhost'
+        static:path.join(__dirname,'public'),
+        port:8080,
+        host:'localhost'
+    },
+    module:{
+        rules:[
+            {
+                test: /\.js$/,
+                exclude:/(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader:'babel-loader',
+                        options:{
+                            presets:[
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        'modules': false,
+                                        'useBuiltIns':'usage',
+                                        'targets':"> 0.25%, not dead",
+                                        //'targets':{"chrome":"80"},
+                                        'corejs':3
+                                    }
+                                ]
+                            ],
+                            "plugins":[
+                                [
+                                    "module-resolver",
+                                    {
+                                        "root":["./"],
+                                        "alias":{
+                                            "@client":"./client"
+                                        }
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }
