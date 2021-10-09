@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { devServer } = require('./webpack.config');
 module.exports = {
     //establecer el modo de desarrollo
@@ -50,7 +51,16 @@ module.exports = {
                       }
                   }
               ]
-            }
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader,'css-loader']
+                }
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'styles/app.css'
+        })
+    ]
 }
