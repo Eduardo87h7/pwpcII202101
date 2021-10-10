@@ -16,7 +16,7 @@ module.exports={
     },
     devServer:{
         static:path.join(__dirname,'public'),
-        port:8080,
+        port:process.env.PORT || '3000',
         host:'localhost'
     },
     module:{
