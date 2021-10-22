@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import winston from '@server/config/winston';
 
 /**
  * Module dependencies.
@@ -65,11 +66,13 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      
+      winston.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      
+      winston.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
