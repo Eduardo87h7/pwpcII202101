@@ -4,7 +4,8 @@ import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+import morgan from 'morgan';
+import winston from "winston";
 
 import indexRouter from '@s-routes/index';
 import usersRouter from '@s-routes/users';
@@ -55,7 +56,7 @@ if (env === 'development') {
 // view engine setup
 configTemplateEngine(app);
 
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: winston.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
