@@ -1,20 +1,15 @@
-const { Router } = require('express');
-var express = require('express');
-var router = express.Router();
+// Importando el router de home
+import homeRouter from './home';
+// Importando el router de users
+import userRouter from './users';
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', author:'EDUARDO1', appName: 'webApp', company:'Awsom Software' });
-});
-/*AGREGANDO NUEVA RUTA */ 
-/*
-router.get('/greeting', function(req, res, next){
-  res.send('Hola campion de la web')
-});
-*/
-router.get('/greeting', function(req, res, next){
-  res.status(200).json({message:'Hola campion de la web'})
-});
+const addRoutes = (app) => {
+  app.use('/', homeRouter);
+  app.use('/users', userRouter);
+  return app;
+};
 
-
-module.exports = router;
+export default {
+  addRoutes,
+};

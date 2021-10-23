@@ -1,4 +1,4 @@
-// eslint-disable-next-line prettier/prettier
+// eslint-disable-next-line import/no-extraneous-dependencies
 import ExpHbs from 'express-handlebars';
 import path from 'path';
 
@@ -11,10 +11,10 @@ export default (app) => {
       defaultLayout: 'main',
     })
   );
-  //seleccionar el motoor de plantillass
-app.set('view engine','hbs');
+  // seleccionar el motoor de plantillass
+  app.set('view engine', 'hbs');
 
-app.set('views',path.join(__dirname, '..', 'views'));
+  app.set('views', path.join(__dirname, '..', 'views'));
 
-return app;
+  return app;
 };
