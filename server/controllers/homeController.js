@@ -3,11 +3,12 @@ const index = (req, res) => {
     title: 'ProjNotes',
   });
 };
+
 const greeting = (req, res) => {
   res.status(200).json({
     message: 'Hola Campeon del FullStarck',
   });
-}
+};
 
 export default {
   index,

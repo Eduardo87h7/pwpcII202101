@@ -1,12 +1,12 @@
-// Importando el router de home
+// Importando el router home
 import homeRouter from './home';
-// Importando el router de users
-import userRouter from './users';
+// Importando router user
+import userRouter from './user';
 
-/* GET home page. */
+// Agregando Rutas a app
 const addRoutes = (app) => {
   app.use('/', homeRouter);
-  app.use('/users', userRouter);
+  app.use('/user', userRouter);
   return app;
 };
 
