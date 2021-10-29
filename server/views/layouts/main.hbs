@@ -9,18 +9,8 @@
     <link rel='stylesheet' href='/styles/app.css' />
   </head>
   <body>
-   <nav>
-     <div class="container">
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo">&#128209;ProjNotes</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="/">inicio</a></li>
-            <li><a href="/about">acerca de ...</a></li>
-          </ul>
-        </div>
-       </div>
-      </nav>
-
+  {{!-- vista parcial de la barra de navegacion --}}
+{{> _navbar}}
        <div class="container">
 {{{body}}}
     </div>
