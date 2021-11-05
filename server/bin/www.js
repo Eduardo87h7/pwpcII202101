@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import winston from '@server/config/winston';
-// CONFIGURACIONES DE APLICACION 
+// CONFIGURACIONES DE APLICACION
 import configKeys from '@server/config/configKeys';
 /**
  * Module dependencies.
