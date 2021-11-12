@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import winston from '@server/config/winston';
-// CONFIGURACIONES DE APLICACION
-import configKeys from '@server/config/configKeys';
-// importando la clase de conexion
+// Importando config de aplicacion
+import configkeys from '@server/config/configkeys';
+// Importar clase de conexion
 import MongooseODM from '@server/config/odm';
+
 /**
  * Module dependencies.
  */
@@ -37,7 +38,7 @@ function normalizePort(val) {
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(configKeys.port || '3000');
+const port = normalizePort(configkeys.port || '3000');
 app.set('port', port);
 
 const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
@@ -83,9 +84,14 @@ function onListening() {
   debug(`Listening on ${bindAdr}`);
 }
 
-// creando el opjeto de conexion 
+/**
+ * Creando objeto conexion
+ */
 const mongooseOdm = new MongooseODM(configkeys.databaseUrl);
-// IIFE
+
+/**
+ * IIFE
+ */
 (async () => {
   try {
     const connectionResult = await mongooseOdm.connect();
@@ -100,15 +106,6 @@ const mongooseOdm = new MongooseODM(configkeys.databaseUrl);
       server.on('listening', onListening);
     }
   } catch (error) {
-    winston.error(`Error not connecting BD: ${error.message}`);
+    winston.error(`Error connecting BD: ${error.message}`);
   }
 })();
-
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);

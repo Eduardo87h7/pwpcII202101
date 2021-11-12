@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
 import winston from './winston';
 
-class MongooseODM {
+class MongooseODM{
+  // constructor
   constructor(url) {
     this.url = url;
-  }
+    }
 
   // Metodo conexion.
   async connect() {
@@ -15,9 +16,10 @@ class MongooseODM {
       return true;
     } catch (error) {
       winston.error(`Error al conectarse a la BD: ${error.message}`);
-      // SE RETORNA FALSE
+      // En caso de la conexion no sea exitosa
       return false;
     }
   }
 }
+
 export default MongooseODM;

@@ -3,11 +3,17 @@
 import './stylesheets/style.css';
 import './stylesheets/mystyles.css';
 
-console.log('Webpack workig!!');
-
-// Inicializando Scripts de materialize
+// Inicializando Script de materialize
 document.addEventListener('DOMContentLoaded', () => {
-  const sideNav = document.querySelectorAll('.sidenav');
-  // eslint-disable-next-line no-undef
-  M.Sidenav.init(sideNav);
+  // inicia todos los sidenavs
+  document.querySelectorAll('.sidenav').forEach((sideNav) => {
+    // eslint-disable-next-line no-undef
+    M.Sidenav.init(sideNav);
+  });
+
+  // iniciar dropdown
+  document
+    .querySelectorAll('.dropdown-trigger')
+    // eslint-disable-next-line no-undef
+    .forEach((dropdown) => M.Dropdown.init(dropdown));
 });
