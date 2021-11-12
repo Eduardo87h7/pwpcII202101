@@ -48,6 +48,7 @@
     "eslint-webpack-plugin": "^2.5.4",
     "express-handlebars": "^5.3.4",
     "mini-css-extract-plugin": "^2.4.2",
+    "mongoose": "^6.0.12",
     "prettier": "^2.0.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.1"

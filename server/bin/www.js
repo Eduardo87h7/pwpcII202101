@@ -2,6 +2,8 @@
 import winston from '@server/config/winston';
 // CONFIGURACIONES DE APLICACION
 import configKeys from '@server/config/configKeys';
+// importando la clase de conexion
+import MongooseODM from '@server/config/odm';
 /**
  * Module dependencies.
  */
@@ -80,6 +82,28 @@ function onListening() {
     typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bindAdr}`);
 }
+
+// creando el opjeto de conexion 
+const mongooseOdm = new MongooseODM(configkeys.databaseUrl);
+// IIFE
+(async () => {
+  try {
+    const connectionResult = await mongooseOdm.connect();
+    if (connectionResult) {
+      winston.info('Conection to BD has successfuly established');
+      /**
+       * Listen on provided port, on all network interfaces.
+       */
+
+      server.listen(port);
+      server.on('error', onError);
+      server.on('listening', onListening);
+    }
+  } catch (error) {
+    winston.error(`Error not connecting BD: ${error.message}`);
+  }
+})();
+
 
 /**
  * Listen on provided port, on all network interfaces.
