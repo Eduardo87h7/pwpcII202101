@@ -12,11 +12,8 @@ const add = (req, res) => {
 // POST "/projects/add"
 const addPost = (req, res) => {
   // Rescatando la información del formulario
-  const { name, description } = req.body;
-  res.json({
-    name,
-    description,
-  });
+  const { validData: project } = req;
+  res.status(200).json(project);
 };
 
 // Pendiente por programar
