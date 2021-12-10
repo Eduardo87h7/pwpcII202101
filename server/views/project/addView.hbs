@@ -12,7 +12,7 @@
                 <!--Entrada del nombre de idea proyecto-->
                 <div class="input-field">
                     <label for="project-name">
-                        Nombre del Proyecto
+                        Nombre del proyecto
                     </label>
                     <input 
                     id="project-name" 
@@ -20,14 +20,35 @@
                     name="name" 
                     type="text" 
                     class="validate"
+                    value="{{project.name}}"
+                    required
                     />
+                    <span class="helper-text" data-error="Debe ingresar un nombre del proyecto"
+                    data-success="Correcto"></span>
                 </div>
+                {{#if errorModel.nameError}}
+                <span style="color:red;">Error: {{errorModel.nameError}}</span> 
+                {{/if}}<br>
                 <!--Entrada de la descripcion de idea proyecto-->
                  <div class="input-field">
                       <label for="project-description">
                         Descripcion del Proyecto
                     </label>
-                    <textarea name="description" id="project-description" class="materialize-textarea"></textarea>
+                    <br>
+                    <textarea 
+                    required 
+                    name="description" 
+                    id="project-description"
+                    class="materialize-textarea validate"
+                    >{{project.description}}</textarea>
+                    <span 
+                    class="helper-text" 
+                    data-error="Debe ingresar una descripcion"
+                    data-success="Correcto"
+                    ></span>
+                    {{#if errorModel.descriptionError}}
+                    <span style="color:red;">Error: {{errorModel.descriptionError}}</span>
+                    {{/if}}
                  </div>
             </div>
             <div class="card-action">
@@ -37,5 +58,7 @@
             </div>
             </form>
         </div>
+    </div>
+</div>
     </div>
 </div>
